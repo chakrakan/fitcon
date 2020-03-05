@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "963238893703",
+    "firebase_url": "https://comp231-fitcon.firebaseio.com",
+    "project_id": "comp231-fitcon",
+    "storage_bucket": "comp231-fitcon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963238893703:android:4e1fec35ffc1235e7b0022",
+        "android_client_info": {
+          "package_name": "comp231.fitcon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "963238893703-vdsrosmsioh3mgal886bptf0d2v6d8ab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKFlZIZmPgdPD9bnF6TMX_H8kJss6atJg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "963238893703-vdsrosmsioh3mgal886bptf0d2v6d8ab.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
