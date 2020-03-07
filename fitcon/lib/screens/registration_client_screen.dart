@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:fitcon/components/RoundedButton.dart';
 import '../constants.dart';
-import 'welcome_screen.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
 import 'package:toast/toast.dart';
 import 'package:flutter/services.dart';
 
-
-
-class LoginScreen extends StatefulWidget {
-  static const String id = 'login_screen';
+class RegistrationClientScreen extends StatefulWidget {
+  static const String id = 'registration_client_screen';
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _RegistrationScreenState createState() => _RegistrationScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegistrationScreenState extends State<RegistrationClientScreen> {
   //final _auth = FirebaseAuth.instance;
   bool showSpinner = false;
   String email;
@@ -25,15 +22,8 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage("assets/images/login_bg.png"),
-              fit: BoxFit.cover),
-        ),
-
-      child: ModalProgressHUD(
+      backgroundColor: Color(0xff73C2FB),
+      body: ModalProgressHUD(
         inAsyncCall: showSpinner,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.0),
@@ -41,21 +31,32 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Flexible(
-                child: Hero(
-                  tag: 'logo',
-                  child: Container(
-                    //height: 200.0,
-                      height: 100.0,
-                      width: 350.0,
-                      margin: EdgeInsets.fromLTRB(0, 0, 0, 150),
-                    child: Image.asset('assets/images/login_logo.png'),
-
-                  ),
-                ),
+              SizedBox(
+                height: 0.0,
+              ),
+              TextField(
+                keyboardType: TextInputType.emailAddress,
+                textAlign: TextAlign.center,
+                onChanged: (value) {
+                  email = value;
+                },
+                decoration:
+                kTextFieldDecoration.copyWith(hintText: 'Enter your first name'),
               ),
               SizedBox(
-                height: 48.0,
+                height: 20.0,
+              ),
+              TextField(
+                keyboardType: TextInputType.emailAddress,
+                textAlign: TextAlign.center,
+                onChanged: (value) {
+                  email = value;
+                },
+                decoration:
+                kTextFieldDecoration.copyWith(hintText: 'Enter your last name'),
+              ),
+              SizedBox(
+                height: 20.0,
               ),
               TextField(
                 keyboardType: TextInputType.emailAddress,
@@ -67,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
               ),
               SizedBox(
-                height: 8.0,
+                height: 20.0,
               ),
               TextField(
                 obscureText: true,
@@ -82,18 +83,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 24.0,
               ),
               RoundedButton(
-                title: 'Sign In',
+                title: 'Create Account',
                 colour: Colors.blueAccent,
                 onPressed: () async {
                   setState(() {
                     showSpinner = true;
                   });
-                  try {
-                    //final user = await _auth.signInWithEmailAndPassword(
-                       // email: email, password: password);
-                    //if (user != null) {
-                      //Navigator.pushNamed(context, ChatScreen.id);
-                   // }
+                  /*try {
+                    final newUser = await _auth.createUserWithEmailAndPassword(
+                        email: email, password: password);
+                    if (newUser != null) {
+                      Navigator.pushNamed(context, ChatScreen.id);
+                    }
 
                     setState(() {
                       showSpinner = false;
@@ -106,13 +107,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
                   } finally {
                     showSpinner = false;
-                  }
+                  }*/
                 },
               ),
             ],
           ),
         ),
-      ),
       ),
     );
   }
@@ -121,5 +121,3 @@ class _LoginScreenState extends State<LoginScreen> {
     Toast.show(msg, context, duration: duration, gravity: gravity);
   }
 }
-
-
