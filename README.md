@@ -68,6 +68,11 @@ I prefer bugfix/YOURNAME for clarity of who is working on it, but it does not ha
 
 Similar intruction as above except you might be checking out your feature branch and merging back to it instead of `develop` if the new feature is what introduced the bug.
 
+#### Lastly, NOTE:
+
+Delete a local branch using `git branch -d branch-name`
+You can delete a remote branch using `git push remote-name --delete branch-name` or using Github's UI.
+
 ## Review
 
 At the end of every 2 weeks/iteration, we will have a meeting to review all work and push all changes from `develop` to the `master` branch.
