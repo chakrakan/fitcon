@@ -77,3 +77,7 @@ You can delete a remote branch using `git push remote-name --delete branch-name`
 ## Review
 
 At the end of every 2 weeks/iteration, we will have a meeting to review all work and push all changes from `develop` to the `master` branch.
+
+In order to prevent confusion, the default branch for the repository has been set to `develop` so we will be working on that.
+
+I've also set up a branch rule for the `master` branch which will only allow pull-requests to go through once reviewed by at least 3 members of the team (I expect everyone to be present for the code-reviews).
