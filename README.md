@@ -70,7 +70,8 @@ Similar intruction as above except you might be checking out your feature branch
 
 #### Lastly, NOTE:
 
-Delete a local branch using `git branch -d branch-name`
+Delete a local branch using `git branch -d branch-name`. 
+
 You can delete a remote branch using `git push remote-name --delete branch-name` or using Github's UI.
 
 ## Review
