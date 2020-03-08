@@ -31,9 +31,12 @@ please ensure you have the following software installed on your computer:
 
 #### Feature
 
-May branch off from: `develop`. 
-Must merge back into: `develop`. 
-Branch naming convention: anything except `master`, `develop`.  
+May branch off from: `develop`.
+
+Must merge back into: `develop`.
+
+Branch naming convention: anything except `master`, `develop`.
+
 I prefer feat/YOURNAME for clarity of who is working on it, but it does not have to be that and can also just be the actual feature name.
 
 When starting work on a new feature, branch off from the develop branch.
@@ -55,9 +58,12 @@ $ git push origin develop
 
 #### BugFix
 
-May branch off from: `develop`, your own particular `feat/xyz` branch. 
+May branch off from: `develop`, your own particular `feat/xyz` branch.
+
 Must merge back into: `develop`, your own particular `feat/xyz` branch. 
+
 Branch naming convention: anything except `master`, `develop`, `feature/feat etc.`.  
+
 I prefer bugfix/YOURNAME for clarity of who is working on it, but it does not have to be that.
 
 Similar intruction as above except you might be checking out your feature branch and merging back to it instead of `develop` if the new feature is what introduced the bug.
