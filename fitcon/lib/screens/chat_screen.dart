@@ -1,6 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fitcon/authentication.dart';
 import 'package:flutter/material.dart';
 import 'package:fitcon/constants.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 final _firestore = Firestore.instance;
@@ -14,7 +15,7 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final messageTextController = TextEditingController();
-  final _auth = FirebaseAuth.instance;
+  final _auth = Auth();
 
   String messageText;
 
@@ -27,7 +28,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void getCurrentUser() async {
     try {
-      final user = await _auth.currentUser();
+      final user = await _auth.getCurrentUser();
       if (user != null) {
         loggedInUser = user;
       }
@@ -49,7 +50,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 Navigator.pop(context);
               }),
         ],
-        title: Text('⚡️Chat'),
+        title: Text('💪🏼️Chat'),
         backgroundColor: Colors.lightBlueAccent,
       ),
       body: SafeArea(
@@ -77,7 +78,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       messageTextController.clear();
                       _firestore.collection('messages').add({
                         'text': messageText,
-                        'sender': loggedInUser.email,
+                        'sender': loggedInUser.displayName,
                       });
                     },
                     child: Text(

@@ -17,6 +17,14 @@ String emailValidator(String value) {
     return null;
 }
 
+String passwordValidator(String value) {
+  if (value.length < 8) {
+    return 'Password must be longer than 8 characters';
+  } else {
+    return null;
+  }
+}
+
 const kMessageTextFieldDecoration = InputDecoration(
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
   hintText: 'Type your message here...',

@@ -1,13 +1,13 @@
 import 'package:fitcon/components/CustomTextField.dart';
 import 'package:flutter/material.dart';
 import 'package:fitcon/components/RoundedButton.dart';
+import '../authentication.dart';
 import '../constants.dart';
-import 'welcome_screen.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
-
-//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:toast/toast.dart';
 import 'package:flutter/services.dart';
+
+import 'chat_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String id = 'login_screen';
@@ -17,7 +17,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  //final _auth = FirebaseAuth.instance;
+  final _auth = new Auth();
   bool showSpinner = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _autoValidate = false;
@@ -85,33 +85,38 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 24.0,
                 ),
                 RoundedButton(
-                  title: 'Sign In',
-                  colour: Colors.blueAccent,
-                  onPressed: () async {
-                    setState(() {
-                      showSpinner = true;
-                    });
-                    try {
-                      //final user = await _auth.signInWithEmailAndPassword(
-                      // email: email, password: password);
-                      //if (user != null) {
-                      //Navigator.pushNamed(context, ChatScreen.id);
-                      // }
+                    title: 'Sign In',
+                    colour: Colors.blueAccent,
+                    onPressed: () async {
+                      final FormState form = _formKey.currentState;
+                      if (_formKey.currentState.validate()) {
+                        form.save();
 
-                      setState(() {
-                        showSpinner = false;
-                      });
-                    } on PlatformException catch (error) {
-                      showPopupMessage(error.message,
-                          duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-                    } catch (e) {
-                      showPopupMessage(e.toString(),
-                          duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-                    } finally {
-                      showSpinner = false;
-                    }
-                  },
-                ),
+                        setState(() {
+                          showSpinner = true;
+                        });
+
+                        try {
+                          final user = await _auth.signIn(_email, _password);
+                          if (user != null) {
+                            Navigator.pushNamed(context, ChatScreen.id);
+                          }
+                          setState(() {
+                            showSpinner = false;
+                          });
+                        } on PlatformException catch (error) {
+                          showPopupMessage(error.message,
+                              duration: Toast.LENGTH_LONG,
+                              gravity: Toast.CENTER);
+                        } catch (e) {
+                          showPopupMessage(e.toString(),
+                              duration: Toast.LENGTH_LONG,
+                              gravity: Toast.CENTER);
+                        } finally {
+                          showSpinner = false;
+                        }
+                      }
+                    }),
                 BackButton(),
               ],
             ),

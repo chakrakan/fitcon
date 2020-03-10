@@ -1,9 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fitcon/components/CustomTextField.dart';
 import 'package:flutter/material.dart';
 import 'package:fitcon/components/RoundedButton.dart';
 import '../constants.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:toast/toast.dart';
 import 'package:fitcon/authentication.dart';
 import 'package:flutter/services.dart';
@@ -17,7 +17,7 @@ class RegistrationClientScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationClientScreen> {
-  final _auth = FirebaseAuth.instance;
+  final _auth = new Auth();
   bool showSpinner = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _autoValidate = false;
@@ -48,13 +48,11 @@ class _RegistrationScreenState extends State<RegistrationClientScreen> {
                     children: <Widget>[
                       CustomTextField(
                         onSaved: (input) => _displayName = input,
-                        validator: (input) =>
-                            input.isEmpty ? "*Required" : null,
+                        validator: (input) => (input.length < 3)
+                            ? "*Valid DisplayName Required"
+                            : null,
                         icon: Icon(Icons.account_circle),
                         hint: "Display Name",
-                      ),
-                      SizedBox(
-                        height: 20.0,
                       ),
                       SizedBox(
                         height: 20.0,
@@ -71,8 +69,7 @@ class _RegistrationScreenState extends State<RegistrationClientScreen> {
                       CustomTextField(
                         onSaved: (input) => _password = input,
                         obscure: true,
-                        validator: (input) =>
-                            input.isEmpty ? "*Required" : null,
+                        validator: passwordValidator,
                         icon: Icon(Icons.security),
                         hint: "Password",
                       ),
@@ -98,55 +95,44 @@ class _RegistrationScreenState extends State<RegistrationClientScreen> {
                 height: 24.0,
               ),
               RoundedButton(
-                title: 'Create Account',
-                colour: Colors.blueAccent,
-                onPressed: () async {
-                  setState(() {
-                    showSpinner = true;
-                  });
-                  try {
-                    final newUser = await _auth.createUserWithEmailAndPassword(
-                        email: _email, password: _password);
-                    if (newUser != null) {
-                      Navigator.pushNamed(context, ChatScreen.id);
-                    }
+                  title: 'Create Account',
+                  colour: Colors.blueAccent,
+                  onPressed: () async {
+                    final FormState form = _formKey.currentState;
+                    if (_formKey.currentState.validate()) {
+                      setState(() {
+                        showSpinner = true;
+                      });
 
-                    setState(() {
-                      showSpinner = false;
-                    });
-                  } on PlatformException catch (error) {
-                    showPopupMessage(error.message,
-                        duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-                  } catch (e) {
-                    showPopupMessage(e.toString(),
-                        duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-                  } finally {
-                    showSpinner = false;
-                  }
-                },
-              ),
+                      form.save();
+                      try {
+                        final newUser = await _auth.signUp(
+                            _email, _password, _displayName, _userType);
+
+                        if (newUser != null) {
+                          Navigator.pushNamed(context, ChatScreen.id);
+                        }
+
+                        setState(() {
+                          showSpinner = false;
+                        });
+                      } on PlatformException catch (error) {
+                        showPopupMessage(error.message,
+                            duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+                      } catch (e) {
+                        showPopupMessage(e.toString(),
+                            duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
+                      } finally {
+                        showSpinner = false;
+                      }
+                    }
+                  }),
               BackButton(),
             ],
           ),
         ),
       ),
     );
-  }
-
-  void _validateRegistrationInput() async {
-    final FormState form = _formKey.currentState;
-    if (_formKey.currentState.validate()) {
-      form.save();
-      try {
-        signIn(_email, _password).then((newUser) {
-          var userUpdateInfo = new UserUpdateInfo();
-          userUpdateInfo.displayName = _displayName;
-          userUpdateInfo;
-        });
-
-
-      }
-    }
   }
 
   void showPopupMessage(String msg, {int duration, int gravity}) {
