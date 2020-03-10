@@ -1,7 +1,6 @@
-import 'dart:ui';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'screens/welcome_screen.dart';
+import 'screens/chat_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/registration_client_screen.dart';
 
@@ -18,7 +17,7 @@ class FitCon extends StatelessWidget {
           WelcomeScreen.id: (context) => WelcomeScreen(),
           LoginScreen.id: (context) => LoginScreen(),
           RegistrationClientScreen.id: (context) => RegistrationClientScreen(),
-          //ChatScreen.id: (context) => ChatScreen(),
+          ChatScreen.id: (context) => ChatScreen(),
         });
   }
 }

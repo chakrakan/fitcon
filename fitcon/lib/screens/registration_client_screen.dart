@@ -1,10 +1,13 @@
+import 'package:fitcon/components/CustomTextField.dart';
 import 'package:flutter/material.dart';
 import 'package:fitcon/components/RoundedButton.dart';
 import '../constants.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
-//import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:toast/toast.dart';
+import 'package:fitcon/authentication.dart';
 import 'package:flutter/services.dart';
+import 'chat_screen.dart';
 
 class RegistrationClientScreen extends StatefulWidget {
   static const String id = 'registration_client_screen';
@@ -14,10 +17,14 @@ class RegistrationClientScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationClientScreen> {
-  //final _auth = FirebaseAuth.instance;
+  final _auth = FirebaseAuth.instance;
   bool showSpinner = false;
-  String email;
-  String password;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool _autoValidate = false;
+  String _displayName;
+  String _userType;
+  String _email;
+  String _password;
 
   @override
   Widget build(BuildContext context) {
@@ -34,51 +41,59 @@ class _RegistrationScreenState extends State<RegistrationClientScreen> {
               SizedBox(
                 height: 0.0,
               ),
-              TextField(
-                keyboardType: TextInputType.emailAddress,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  email = value;
-                },
-                decoration:
-                kTextFieldDecoration.copyWith(hintText: 'Enter your first name'),
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-              TextField(
-                keyboardType: TextInputType.emailAddress,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  email = value;
-                },
-                decoration:
-                kTextFieldDecoration.copyWith(hintText: 'Enter your last name'),
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-              TextField(
-                keyboardType: TextInputType.emailAddress,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  email = value;
-                },
-                decoration:
-                kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-              TextField(
-                obscureText: true,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  password = value;
-                },
-                decoration: kTextFieldDecoration.copyWith(
-                    hintText: 'Enter your password'),
-              ),
+              Form(
+                  key: _formKey,
+                  autovalidate: _autoValidate,
+                  child: Column(
+                    children: <Widget>[
+                      CustomTextField(
+                        onSaved: (input) => _displayName = input,
+                        validator: (input) =>
+                            input.isEmpty ? "*Required" : null,
+                        icon: Icon(Icons.account_circle),
+                        hint: "Display Name",
+                      ),
+                      SizedBox(
+                        height: 20.0,
+                      ),
+                      SizedBox(
+                        height: 20.0,
+                      ),
+                      CustomTextField(
+                        onSaved: (input) => _email = input,
+                        validator: emailValidator,
+                        icon: Icon(Icons.contact_mail),
+                        hint: "Email",
+                      ),
+                      SizedBox(
+                        height: 20.0,
+                      ),
+                      CustomTextField(
+                        onSaved: (input) => _password = input,
+                        obscure: true,
+                        validator: (input) =>
+                            input.isEmpty ? "*Required" : null,
+                        icon: Icon(Icons.security),
+                        hint: "Password",
+                      ),
+                      SizedBox(
+                        height: 20.0,
+                      ),
+                      new DropdownButton<String>(
+                          value: _userType,
+                          items: <String>['Customer', 'Trainer'].map((label) {
+                            return new DropdownMenuItem<String>(
+                              value: label,
+                              child: new Text(label),
+                            );
+                          }).toList(),
+                          onChanged: (value) {
+                            setState(() {
+                              _userType = value;
+                            });
+                          }),
+                    ],
+                  )),
               SizedBox(
                 height: 24.0,
               ),
@@ -89,9 +104,9 @@ class _RegistrationScreenState extends State<RegistrationClientScreen> {
                   setState(() {
                     showSpinner = true;
                   });
-                  /*try {
+                  try {
                     final newUser = await _auth.createUserWithEmailAndPassword(
-                        email: email, password: password);
+                        email: _email, password: _password);
                     if (newUser != null) {
                       Navigator.pushNamed(context, ChatScreen.id);
                     }
@@ -107,14 +122,31 @@ class _RegistrationScreenState extends State<RegistrationClientScreen> {
                         duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
                   } finally {
                     showSpinner = false;
-                  }*/
+                  }
                 },
               ),
+              BackButton(),
             ],
           ),
         ),
       ),
     );
+  }
+
+  void _validateRegistrationInput() async {
+    final FormState form = _formKey.currentState;
+    if (_formKey.currentState.validate()) {
+      form.save();
+      try {
+        signIn(_email, _password).then((newUser) {
+          var userUpdateInfo = new UserUpdateInfo();
+          userUpdateInfo.displayName = _displayName;
+          userUpdateInfo;
+        });
+
+
+      }
+    }
   }
 
   void showPopupMessage(String msg, {int duration, int gravity}) {

@@ -6,11 +6,21 @@ const kSendButtonTextStyle = TextStyle(
   fontSize: 18.0,
 );
 
+String emailValidator(String value) {
+  Pattern pattern =
+      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+  RegExp regex = new RegExp(pattern);
+  if (value.isEmpty) return '*Required';
+  if (!regex.hasMatch(value))
+    return '*Enter a valid email';
+  else
+    return null;
+}
+
 const kMessageTextFieldDecoration = InputDecoration(
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
   hintText: 'Type your message here...',
   border: InputBorder.none,
-
 );
 
 const kMessageContainerDecoration = BoxDecoration(
