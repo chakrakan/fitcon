@@ -49,13 +49,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       //height: 200.0,
                       height: 100.0,
                       width: 350.0,
-                      margin: EdgeInsets.fromLTRB(0, 0, 0, 150),
+                      margin: EdgeInsets.all(2),
                       child: Image.asset('assets/images/login_logo.png'),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: 48.0,
+                  height: 10.0,
                 ),
                 Form(
                     key: _formKey,
