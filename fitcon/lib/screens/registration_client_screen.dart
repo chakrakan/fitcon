@@ -38,8 +38,10 @@ class _RegistrationScreenState extends State<RegistrationClientScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              SizedBox(
-                height: 0.0,
+              Flexible(
+                child: SizedBox(
+                  height: 40.0,
+                ),
               ),
               Form(
                   key: _formKey,
@@ -94,40 +96,44 @@ class _RegistrationScreenState extends State<RegistrationClientScreen> {
               SizedBox(
                 height: 24.0,
               ),
-              RoundedButton(
-                  title: 'Create Account',
-                  colour: Colors.blueAccent,
-                  onPressed: () async {
-                    final FormState form = _formKey.currentState;
-                    if (_formKey.currentState.validate()) {
-                      setState(() {
-                        showSpinner = true;
-                      });
-
-                      form.save();
-                      try {
-                        final newUser = await _auth.signUp(
-                            _email, _password, _displayName, _userType);
-
-                        if (newUser != null) {
-                          Navigator.pushNamed(context, ChatScreen.id);
-                        }
-
+              Flexible(
+                child: RoundedButton(
+                    title: 'Create Account',
+                    colour: Colors.blueAccent,
+                    onPressed: () async {
+                      final FormState form = _formKey.currentState;
+                      if (_formKey.currentState.validate()) {
                         setState(() {
-                          showSpinner = false;
+                          showSpinner = true;
                         });
-                      } on PlatformException catch (error) {
-                        showPopupMessage(error.message,
-                            duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-                      } catch (e) {
-                        showPopupMessage(e.toString(),
-                            duration: Toast.LENGTH_LONG, gravity: Toast.CENTER);
-                      } finally {
-                        showSpinner = false;
+
+                        form.save();
+                        try {
+                          final newUser = await _auth.signUp(
+                              _email, _password, _displayName, _userType);
+
+                          if (newUser != null) {
+                            Navigator.pushNamed(context, ChatScreen.id);
+                          }
+
+                          setState(() {
+                            showSpinner = false;
+                          });
+                        } on PlatformException catch (error) {
+                          showPopupMessage(error.message,
+                              duration: Toast.LENGTH_LONG,
+                              gravity: Toast.CENTER);
+                        } catch (e) {
+                          showPopupMessage(e.toString(),
+                              duration: Toast.LENGTH_LONG,
+                              gravity: Toast.CENTER);
+                        } finally {
+                          showSpinner = false;
+                        }
                       }
-                    }
-                  }),
-              BackButton(),
+                    }),
+              ),
+              Flexible(child: BackButton()),
             ],
           ),
         ),
