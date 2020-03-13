@@ -18,7 +18,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   @override
   void initState() {
     super.initState();
-
     controller =
         AnimationController(duration: Duration(seconds: 1), vsync: this);
     animation = ColorTween(begin: Colors.blueGrey, end: Colors.white)
@@ -31,8 +30,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
   @override
   void dispose() {
-    controller.dispose();
     super.dispose();
+    controller.dispose();
   }
 
   @override
@@ -54,13 +53,15 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Hero(
-                    tag: 'logo',
-                    child: Container(
-                        child: Image.asset('assets/images/login_logo.png'),
-                        height: 100.0,
-                        width: 350.0,
-                        margin: EdgeInsets.fromLTRB(0, 0, 0, 150)),
+                  Flexible(
+                    child: Hero(
+                      tag: 'logo',
+                      child: Container(
+                          child: Image.asset('assets/images/login_logo.png'),
+                          height: 100.0,
+                          width: 350.0,
+                          margin: EdgeInsets.fromLTRB(0, 0, 0, 150)),
+                    ),
                   ),
                 ],
               ),
