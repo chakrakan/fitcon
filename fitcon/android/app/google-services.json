@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "963238893703-is7ncvnd22v9hs53rst1p7horgh6ddgp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "comp231.fitcon",
+            "certificate_hash": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+          }
+        },
+        {
           "client_id": "963238893703-vdsrosmsioh3mgal886bptf0d2v6d8ab.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -30,6 +38,13 @@
             {
               "client_id": "963238893703-vdsrosmsioh3mgal886bptf0d2v6d8ab.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "963238893703-pb8h80mdo7rr7c9e36q6km4sgs0a09g3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "comp231.fitcon"
+              }
             }
           ]
         }
