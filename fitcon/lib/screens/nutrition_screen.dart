@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../components/RoundedButton.dart';
+import 'main_screen.dart';
+
 class NutritionScreen extends StatefulWidget {
   static const String id = 'nutrition_screen';
 
@@ -12,7 +15,7 @@ class _NutritionScreenState extends State<NutritionScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'ListViews',
+        title: 'NutritionScreen',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
@@ -22,11 +25,24 @@ class _NutritionScreenState extends State<NutritionScreen> {
               'Nutrition Plan',
             ),
           ),
-          body: ListView.builder(
-            itemBuilder: (BuildContext context, int index) =>
-                EntryItem(data[index]),
-            itemCount: data.length,
-          ),
+            body: Column(
+              children: <Widget>[
+                Expanded(
+                  child: ListView.builder(
+                    itemBuilder: (BuildContext context, int index) =>
+                        EntryItem(data[index]),
+                    itemCount: data.length,
+                  ),
+                ),
+                RoundedButton(
+                    title: 'Return',
+                    colour: Colors.blueAccent,
+                    onPressed: () {
+                      Navigator.pushNamed(context, MainScreen.id);
+                    }
+                )
+              ],
+            )
         ));
   }
 }
@@ -109,6 +125,7 @@ class EntryItem extends StatelessWidget {
       key: PageStorageKey<Entry>(root),
       title: Text(root.title),
       children: root.children.map(_buildTiles).toList(),
+
     );
   }
 
