@@ -30,8 +30,7 @@ class ChatScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'FitCon Chat',
-          style:
-              TextStyle(color: Colors.blueAccent, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),
