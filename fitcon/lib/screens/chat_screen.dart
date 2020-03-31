@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -15,7 +16,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 FirebaseUser loggedInUser;
 
-class ChatScreen extends StatefulWidget {
+class ChatScreen extends StatelessWidget {
   static const String id = 'chat_screen';
 
   final String peerId;
@@ -23,13 +24,35 @@ class ChatScreen extends StatefulWidget {
 
   ChatScreen({Key key, @required this.peerId, @required this.peerAvatar})
       : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'FitCon Chat',
+          style:
+              TextStyle(color: Colors.blueAccent, fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+      ),
+      body: Chat(peerId: peerId, peerAvatar: peerAvatar),
+    );
+  }
+}
+
+class Chat extends StatefulWidget {
+  final String peerId;
+  final String peerAvatar;
+
+  Chat({Key key, @required this.peerId, @required this.peerAvatar})
+      : super(key: key);
 
   @override
   _ChatScreenState createState() =>
       _ChatScreenState(peerId: peerId, peerAvatar: peerAvatar);
 }
 
-class _ChatScreenState extends State<ChatScreen> {
+class _ChatScreenState extends State<Chat> {
   _ChatScreenState({Key key, @required this.peerId, @required this.peerAvatar});
 
   String peerId;
@@ -432,10 +455,10 @@ class _ChatScreenState extends State<ChatScreen> {
         children: <Widget>[
           // Button send image
           Material(
-            child: new Container(
-              margin: new EdgeInsets.symmetric(horizontal: 1.0),
-              child: new IconButton(
-                icon: new Icon(Icons.image),
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 1.0),
+              child: IconButton(
+                icon: Icon(Icons.image),
                 onPressed: getImage,
                 color: Colors.black54,
               ),
