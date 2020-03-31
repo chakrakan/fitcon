@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:fitcon/components/CustomTextField.dart';
+import 'package:fitcon/components/custom_text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:fitcon/components/RoundedButton.dart';
+import 'package:fitcon/components/rounded_button.dart';
 import '../constants.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:toast/toast.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fitcon/components/RoundedButton.dart';
+import 'package:fitcon/components/rounded_button.dart';
 import 'login_screen.dart';
 import 'registration_client_screen.dart';
 

@@ -6,7 +6,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:fitcon/screens/Edit_Screen.dart';
+import 'package:fitcon/screens/edit_profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -36,10 +36,12 @@ class MainScreenState extends State<MainScreen> {
 
   bool isLoading = false;
   List<Choice> choices = const <Choice>[
-    const Choice(title: 'Edit', icon: Icons.edit),
-    const Choice(title: 'Log out', icon: Icons.exit_to_app),
+
+    const Choice(title: 'Payment', icon: Icons.account_balance_wallet),
     const Choice(title: 'Nutition Info', icon: Icons.info_outline),
     const Choice(title: 'Workout Routine', icon: Icons.directions_run),
+    const Choice(title: 'Edit', icon: Icons.edit),
+    const Choice(title: 'Log out', icon: Icons.exit_to_app),
   ];
 
   @override
@@ -147,7 +149,7 @@ class MainScreenState extends State<MainScreen> {
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      'Are you sure to exit app?',
+                      'Are you sure you want to exit the application?',
                       style: TextStyle(color: Colors.white70, fontSize: 14.0),
                     ),
                   ],
@@ -212,8 +214,8 @@ class MainScreenState extends State<MainScreen> {
     });
 
     await FirebaseAuth.instance.signOut();
-    await googleSignIn.disconnect();
-    await googleSignIn.signOut();
+//    await googleSignIn.disconnect();
+//    await googleSignIn.signOut();
 
     this.setState(() {
       isLoading = false;
@@ -355,7 +357,7 @@ class MainScreenState extends State<MainScreen> {
                       ),
                       Container(
                         child: Text(
-                          'About me: ${document['aboutMe'] ?? 'Not available'}',
+                          'User-Type: ${document['userType'] ?? 'Not available'}',
                           style: TextStyle(color: Colors.black54),
                         ),
                         alignment: Alignment.centerLeft,
