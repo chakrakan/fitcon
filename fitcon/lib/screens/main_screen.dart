@@ -36,9 +36,11 @@ class MainScreenState extends State<MainScreen> {
 
   bool isLoading = false;
   List<Choice> choices = const <Choice>[
-    const Choice(title: 'Edit', icon: Icons.edit),
+
+    const Choice(title: 'Payment', icon: Icons.account_balance_wallet),
     const Choice(title: 'Nutition Info', icon: Icons.info_outline),
     const Choice(title: 'Workout Routine', icon: Icons.directions_run),
+    const Choice(title: 'Edit', icon: Icons.edit),
     const Choice(title: 'Log out', icon: Icons.exit_to_app),
   ];
 
@@ -212,8 +214,8 @@ class MainScreenState extends State<MainScreen> {
     });
 
     await FirebaseAuth.instance.signOut();
-    await googleSignIn.disconnect();
-    await googleSignIn.signOut();
+//    await googleSignIn.disconnect();
+//    await googleSignIn.signOut();
 
     this.setState(() {
       isLoading = false;
