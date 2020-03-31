@@ -37,9 +37,9 @@ class MainScreenState extends State<MainScreen> {
   bool isLoading = false;
   List<Choice> choices = const <Choice>[
     const Choice(title: 'Edit', icon: Icons.edit),
-    const Choice(title: 'Log out', icon: Icons.exit_to_app),
     const Choice(title: 'Nutition Info', icon: Icons.info_outline),
     const Choice(title: 'Workout Routine', icon: Icons.directions_run),
+    const Choice(title: 'Log out', icon: Icons.exit_to_app),
   ];
 
   @override
@@ -147,7 +147,7 @@ class MainScreenState extends State<MainScreen> {
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      'Are you sure to exit app?',
+                      'Are you sure you want to exit the application?',
                       style: TextStyle(color: Colors.white70, fontSize: 14.0),
                     ),
                   ],
@@ -355,7 +355,7 @@ class MainScreenState extends State<MainScreen> {
                       ),
                       Container(
                         child: Text(
-                          'About me: ${document['aboutMe'] ?? 'Not available'}',
+                          'User-Type: ${document['userType'] ?? 'Not available'}',
                           style: TextStyle(color: Colors.black54),
                         ),
                         alignment: Alignment.centerLeft,
