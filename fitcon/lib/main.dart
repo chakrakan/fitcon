@@ -1,5 +1,5 @@
 import 'package:fitcon/screens/main_screen.dart';
-import 'package:fitcon/screens/nutrition_screen.dart';
+import 'package:fitcon/screens/nutrition/nutrition_screen.dart';
 import 'package:fitcon/screens/workout_routine_screen.dart';
 import 'package:flutter/material.dart';
 import 'screens/welcome_screen.dart';

@@ -13,6 +13,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'chat_screen.dart';
+import 'nutrition/nutrition_screen.dart';
 import 'welcome_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -38,7 +39,7 @@ class MainScreenState extends State<MainScreen> {
   List<Choice> choices = const <Choice>[
 
     const Choice(title: 'Payment', icon: Icons.account_balance_wallet),
-    const Choice(title: 'Nutition Info', icon: Icons.info_outline),
+    const Choice(title: 'Nutrition Info', icon: Icons.info_outline),
     const Choice(title: 'Workout Routine', icon: Icons.directions_run),
     const Choice(title: 'Edit', icon: Icons.edit),
     const Choice(title: 'Log out', icon: Icons.exit_to_app),
@@ -89,7 +90,12 @@ class MainScreenState extends State<MainScreen> {
   void onItemMenuPress(Choice choice) {
     if (choice.title == 'Log out') {
       handleSignOut();
-    } else {
+    }
+    if (choice.title == 'Nutrition Info') {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => NutritionScreen()));
+    }
+    else {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => EditScreen()));
     }
