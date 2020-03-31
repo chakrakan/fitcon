@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fitcon/components/CustomTextField.dart';
+import 'package:fitcon/components/custom_text_field.dart';
 import 'package:fitcon/screens/main_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:fitcon/components/RoundedButton.dart';
+import 'package:fitcon/components/rounded_button.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../authentication.dart';
