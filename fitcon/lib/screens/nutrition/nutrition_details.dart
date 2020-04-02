@@ -1,20 +1,21 @@
-//new task.dart
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'task.dart';
 import 'firestoreservice.dart';
-//import 'createtodo.dart';
 
-class NewTask extends StatefulWidget {
-  NewTask();
+class NutritionDetails extends StatefulWidget {
+  NutritionDetails();
 
   @override
-  _NewTaskState createState() => _NewTaskState();
+  _NutritionDetailsState createState() => _NutritionDetailsState();
 }
 
-class _NewTaskState extends State<NewTask> {
+class _NutritionDetailsState extends State<NutritionDetails> {
   String taskname, taskdetails, taskDate, taskTime;
+  TextEditingController _taskNameController, _taskDetailsController,
+      _taskDateController, _taskTimeController;
+
 
   getTaskName(taskname) {
     this.taskname = taskname;
@@ -83,7 +84,7 @@ class _NewTaskState extends State<NewTask> {
                 Padding(
                   padding: EdgeInsets.only(left: 16.0, right: 16.0),
                   child: TextField(
-                    // controller: _taskNameController,
+                    controller: _taskNameController,
                     onChanged: (String name) {
                       getTaskName(name);
                     },
@@ -93,7 +94,7 @@ class _NewTaskState extends State<NewTask> {
                 Padding(
                   padding: EdgeInsets.only(left: 16.0, right: 16.0),
                   child: TextField(
-                    //controller: _taskDetailsController,
+                    controller: _taskDetailsController,
                     decoration: InputDecoration(labelText: "Details: "),
                     onChanged: (String taskdetails) {
                       getTaskDetails(taskdetails);
@@ -103,7 +104,7 @@ class _NewTaskState extends State<NewTask> {
                 Padding(
                   padding: EdgeInsets.only(left: 16.0, right: 16.0),
                   child: TextField(
-                    // controller: _taskDateController,
+                    controller: _taskDateController,
                     decoration: InputDecoration(labelText: "Date: "),
                     onChanged: (String taskdate) {
                       getTaskDate(taskdate);
@@ -113,7 +114,7 @@ class _NewTaskState extends State<NewTask> {
                 Padding(
                   padding: EdgeInsets.only(left: 16.0, right: 16.0),
                   child: TextField(
-                    // controller: _taskTimeController,
+                    controller: _taskTimeController,
                     decoration: InputDecoration(labelText: "Time: "),
                     onChanged: (String tasktime) {
                       getTaskTime(tasktime);
@@ -200,24 +201,35 @@ class _NewTaskState extends State<NewTask> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
+
                     RaisedButton(
-                        color: Color(0xFFFA7397),
+                        color: Colors.blueAccent,
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
                         child: const Text(
                           "Cancel",
-                          style: TextStyle(color: Color(0xFFFDDE42)),
+                          style: TextStyle(color: Colors.white,),
                         )),
+                    RaisedButton(
+                        color: Colors.red,
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: const Text(
+                          "Delete",
+                          style: TextStyle(color: Colors.white,),
+                        )),
+
                     // This button results in adding the contact to the database
                     RaisedButton(
-                        color: Color(0xFFFA7397),
+                        color: Colors.blueAccent,
                         onPressed: () {
                           createData();
                         },
                         child: const Text(
-                          "Submit",
-                          style: TextStyle(color: Color(0xFFFDDE42)),
+                          "Save",
+                          style: TextStyle(color: Colors.white,),
                         ))
                   ],
                 )
@@ -233,17 +245,7 @@ class _NewTaskState extends State<NewTask> {
     return Container(
       height: 80.0,
       width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-            colors: [
-              const Color(0xFFFA7397),
-              const Color(0xFFFDDE42),
-            ],
-            begin: const FractionalOffset(0.0, 0.0),
-            end: const FractionalOffset(1.0, 0.0),
-            stops: [0.0, 1.0],
-            tileMode: TileMode.clamp),
-      ),
+      color: Colors.blueAccent,
       child: Padding(
         padding: const EdgeInsets.only(top: 16.0),
         child: Center(
@@ -267,7 +269,7 @@ class _NewTaskState extends State<NewTask> {
               flex: 5,
               child: Container(
                 child: Text(
-                  'New Tasks',
+                  'Edit Item',
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,

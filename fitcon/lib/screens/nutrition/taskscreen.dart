@@ -71,7 +71,7 @@ class _TaskScreenState extends State<TaskScreen> {
                   padding: EdgeInsets.only(left: 16.0, right: 16.0),
                   child: TextField(
                     controller: _taskNameController,
-                    decoration: InputDecoration(labelText: "Task: "),
+                    decoration: InputDecoration(labelText: "Name of item: "),
                   ),
                 ),
                 Padding(
@@ -241,7 +241,7 @@ class _TaskScreenState extends State<TaskScreen> {
               flex: 5,
               child: Container(
                 child: Text(
-                  'New Tasks',
+                  'New Item',
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:fitcon/screens/nutrition/nutrition_details.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'firestoreservice.dart';
@@ -66,37 +67,52 @@ class _NutritionScreenState extends State<NutritionScreen> {
                               child: Center(
                                 child: Padding(
                                   padding: EdgeInsets.all(8.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: <Widget>[
-                                      nutritionType('${items[index].tasktype}'),
-                                      Text(
-                                        '${items[index].taskname}',
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 20.0),
-                                      ),
-                                      Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          Text(
-                                            '${items[index].taskdate}',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 18.0,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          Text(
-                                            '${items[index].tasktime}',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 16.0),
-                                          ),
-                                        ],
-                                      )
-                                    ],
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) =>
+                                            NutritionDetails()),
+                                      );
+//                                      fireServ
+//                                          .deleteNutritionTask(items[index].taskname);
+                                      print('Long press');
+                                    },
+                                    child: Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        nutritionType(
+                                            '${items[index].tasktype}'),
+                                        Text(
+                                          '${items[index].taskname}',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 20.0),
+                                        ),
+                                        Column(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            Text(
+                                              '${items[index].taskdate}',
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 18.0,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            Text(
+                                              '${items[index].tasktime}',
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 16.0),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+
+                                    ),
+
                                   ),
                                 ),
                               ),
@@ -117,7 +133,7 @@ class _NutritionScreenState extends State<NutritionScreen> {
           color: Colors.white,
         ),
         onPressed: () {
-          //Navigator.push(context,MaterialPageRoute(builder: (context) => TaskScreen()),
+          //Navigator.push(context, MaterialPageRoute(builder: (context) => TaskScreen()),
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -180,7 +196,7 @@ class _NutritionScreenState extends State<NutritionScreen> {
                       color: Colors.white,
                     ),
                     onPressed: () {
-                      //
+                      Navigator.of(context).pop();
                     }),
               ),
             ),
@@ -196,19 +212,7 @@ class _NutritionScreenState extends State<NutritionScreen> {
                 ),
               ),
             ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                child: IconButton(
-                    icon: Icon(
-                      FontAwesomeIcons.search,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {
-                      //
-                    }),
-              ),
-            ),
+
           ],
         )),
       ),
