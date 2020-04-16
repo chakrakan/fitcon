@@ -14,6 +14,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'main_screen.dart';
+
 FirebaseUser loggedInUser;
 
 class ChatScreen extends StatelessWidget {
@@ -47,12 +49,12 @@ class Chat extends StatefulWidget {
       : super(key: key);
 
   @override
-  _ChatScreenState createState() =>
-      _ChatScreenState(peerId: peerId, peerAvatar: peerAvatar);
+  _ChatState createState() =>
+      _ChatState(peerId: peerId, peerAvatar: peerAvatar);
 }
 
-class _ChatScreenState extends State<Chat> {
-  _ChatScreenState({Key key, @required this.peerId, @required this.peerAvatar});
+class _ChatState extends State<Chat> {
+  _ChatState({Key key, @required this.peerId, @required this.peerAvatar});
 
   String peerId;
   String peerAvatar;
@@ -429,7 +431,6 @@ class _ChatScreenState extends State<Chat> {
         .collection('users')
         .document(id)
         .updateData({'chattingWith': null});
-
     return Future.value(false);
   }
 
@@ -481,10 +482,10 @@ class _ChatScreenState extends State<Chat> {
 
           // Button send message
           Material(
-            child: new Container(
-              margin: new EdgeInsets.symmetric(horizontal: 8.0),
-              child: new IconButton(
-                icon: new Icon(Icons.send),
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 8.0),
+              child: IconButton(
+                icon: Icon(Icons.send),
                 onPressed: () => onSendMessage(textEditingController.text, 0),
                 color: Colors.black54,
               ),
@@ -495,9 +496,8 @@ class _ChatScreenState extends State<Chat> {
       ),
       width: double.infinity,
       height: 50.0,
-      decoration: new BoxDecoration(
-          border: new Border(
-              top: new BorderSide(color: Color(0xffE8E8E8), width: 0.5)),
+      decoration: BoxDecoration(
+          border: Border(top: BorderSide(color: Color(0xffE8E8E8), width: 0.5)),
           color: Colors.white),
     );
   }
@@ -556,99 +556,3 @@ class _ChatScreenState extends State<Chat> {
     );
   }
 }
-
-//class MessagesStream extends StatelessWidget {
-//  @override
-//  Widget build(BuildContext context) {
-//    return StreamBuilder<QuerySnapshot>(
-//      stream: _firestore
-//          .collection('messages')
-//          .orderBy('timeStamp', descending: true)
-//          .snapshots(),
-//      builder: (context, snapshot) {
-//        if (!snapshot.hasData) {
-//          return Center(
-//            child: CircularProgressIndicator(
-//              backgroundColor: Colors.lightBlueAccent,
-//            ),
-//          );
-//        }
-//        final messages = snapshot.data.documents;
-//        List<MessageBubble> messageBubbles = [];
-//        for (var message in messages) {
-//          final messageText = message.data['text'];
-//          final messageSender = message.data['sender'];
-//
-//          final currentUser = loggedInUser.email;
-//
-//          final messageBubble = MessageBubble(
-//            sender: messageSender,
-//            text: messageText,
-//            isMe: currentUser == messageSender,
-//          );
-//
-//          messageBubbles.add(messageBubble);
-//        }
-//        return Expanded(
-//          child: ListView(
-//            reverse: true,
-//            padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-//            children: messageBubbles,
-//          ),
-//        );
-//      },
-//    );
-//  }
-//}
-//
-//class MessageBubble extends StatelessWidget {
-//  MessageBubble({this.sender, this.text, this.isMe});
-//
-//  final String sender;
-//  final String text;
-//  final bool isMe;
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return Padding(
-//      padding: EdgeInsets.all(10.0),
-//      child: Column(
-//        crossAxisAlignment:
-//            isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-//        children: <Widget>[
-//          Text(
-//            sender,
-//            style: TextStyle(
-//              fontSize: 12.0,
-//              color: Colors.black54,
-//            ),
-//          ),
-//          Material(
-//            borderRadius: isMe
-//                ? BorderRadius.only(
-//                    topLeft: Radius.circular(30.0),
-//                    bottomLeft: Radius.circular(30.0),
-//                    bottomRight: Radius.circular(30.0))
-//                : BorderRadius.only(
-//                    bottomLeft: Radius.circular(30.0),
-//                    bottomRight: Radius.circular(30.0),
-//                    topRight: Radius.circular(30.0),
-//                  ),
-//            elevation: 5.0,
-//            color: isMe ? Colors.lightBlueAccent : Colors.white,
-//            child: Padding(
-//              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-//              child: Text(
-//                text,
-//                style: TextStyle(
-//                  color: isMe ? Colors.white : Colors.black54,
-//                  fontSize: 15.0,
-//                ),
-//              ),
-//            ),
-//          ),
-//        ],
-//      ),
-//    );
-//  }
-//}
