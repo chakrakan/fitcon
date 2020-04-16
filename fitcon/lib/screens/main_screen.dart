@@ -7,7 +7,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:fitcon/screens/edit_profile_screen.dart';
-import 'package:fitcon/screens/nutrition_screen.dart';
 import 'package:fitcon/screens/payment_screen.dart';
 import 'package:fitcon/screens/workout_routine_screen.dart';
 import 'package:flutter/material.dart';
@@ -93,13 +92,12 @@ class MainScreenState extends State<MainScreen> {
     if (choice.title == 'Log out') {
       handleSignOut();
     } else if (choice.title == 'Edit') {
-
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => EditScreen()));
     } else if (choice.title == 'Payment') {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => PaymentScreen()));
-    } else if (choice.title == 'Nutition Info') {
+    } else if (choice.title == 'Nutrition Info') {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => NutritionScreen()));
     } else if (choice.title == 'Workout Routine') {
