@@ -43,7 +43,7 @@ class _WorkoutRoutineScreenState extends State<WorkoutRoutineScreen> {
       floatingActionButton: new FloatingActionButton(
         onPressed: () => debugPrint("FB Button Click"),
         child: new Icon(Icons.add),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.blueAccent,
         foregroundColor: Colors.white,
       ),
     );
