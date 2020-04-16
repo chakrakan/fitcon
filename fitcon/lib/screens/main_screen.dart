@@ -16,6 +16,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'chat_screen.dart';
+import 'nutrition/nutrition_screen.dart';
 import 'welcome_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -40,7 +41,7 @@ class MainScreenState extends State<MainScreen> {
   bool isLoading = false;
   List<Choice> choices = const <Choice>[
     const Choice(title: 'Payment', icon: Icons.account_balance_wallet),
-    const Choice(title: 'Nutition Info', icon: Icons.info_outline),
+    const Choice(title: 'Nutrition Info', icon: Icons.info_outline),
     const Choice(title: 'Workout Routine', icon: Icons.directions_run),
     const Choice(title: 'Edit', icon: Icons.edit),
     const Choice(title: 'Log out', icon: Icons.exit_to_app),
@@ -92,6 +93,7 @@ class MainScreenState extends State<MainScreen> {
     if (choice.title == 'Log out') {
       handleSignOut();
     } else if (choice.title == 'Edit') {
+
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => EditScreen()));
     } else if (choice.title == 'Payment') {
@@ -241,9 +243,10 @@ class MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blueAccent,
         title: Text(
           'MAIN',
-          style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         actions: <Widget>[
