@@ -25,24 +25,24 @@ For context, these demonstrations are running on the Pixel 3 API 29 emulator
 
 ### Log In
 
-![Log In](https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/log_in.png =200x400)
+<img src="https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/log_in.png" alt="Log In" width="200" height="400" />
 
 ### Main 
 
-![Main](https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/chat_screen.png =200x400)
+<img src="https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/chat_screen.png" alt="Main" width="200" height="400" />
 
 ## Sample Chat
 
-![Sample Chat](https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/sample_chat.png =200x400)
+<img src="https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/sample_chat.png" alt="Sample Chat" width="200" height="400" />
 
 ### Edit User Profile
 
-![Edit User](https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/edit_user.png =200x400)
+<img src="https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/edit_user.png" alt="Edit User" width="200" height="400" />
 
 ### Nutrition Add/Edit
 
-![Nutrition](https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/nutrition_edit.png =200x400)
+<img src="https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/nutrition_edit.png" alt="Nutrition Edit" width="200" height="400" />
 
 ### Payment
 
-![Payment](https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/payment.png =200x400)
+<img src="https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/payment.png" alt="Payment" width="200" height="400" />
