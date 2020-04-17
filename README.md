@@ -22,7 +22,7 @@ please ensure you have the following software installed on your computer:
 ## Sample Demo
 
 For context, these demonstrations are running on the Pixel 3 API 29 emulator
-| Login | Chat-Screen | Sample Chat | Edit User
+| Login | Main | Sample Chat | Edit User
 |:-----:|:-----:|:-----:|:-----:|
 | <img src="https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/log_in.png" alt="Log In" width="200" height="400" /> | <img src="https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/chat_screen.png" alt="Main" width="200" height="400" /> | <img src="https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/sample_chat.png" alt="Sample Chat" width="200" height="400" /> | <img src="https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/edit_user.png" alt="Edit User" width="200" height="400" /> |
 
