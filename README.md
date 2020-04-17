@@ -31,7 +31,7 @@ For context, these demonstrations are running on the Pixel 3 API 29 emulator
 
 <img src="https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/chat_screen.png" alt="Main" width="200" height="400" />
 
-## Sample Chat
+### Sample Chat
 
 <img src="https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/sample_chat.png" alt="Sample Chat" width="200" height="400" />
 
