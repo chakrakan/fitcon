@@ -25,7 +25,7 @@ class _WorkoutRoutineScreenState extends State<WorkoutRoutineScreen> {
           "Working Out List",
           style: new TextStyle(fontSize: 19.0),
         ),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.blueAccent,
         actions: <Widget>[
           new IconButton(
               icon: new Icon(Icons.add), onPressed: () => debugPrint("Add")),
