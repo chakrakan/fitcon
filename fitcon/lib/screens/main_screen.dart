@@ -7,6 +7,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:fitcon/screens/edit_profile_screen.dart';
+import 'package:fitcon/screens/payment_screen.dart';
+import 'package:fitcon/screens/workout_routine_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -37,7 +39,6 @@ class MainScreenState extends State<MainScreen> {
 
   bool isLoading = false;
   List<Choice> choices = const <Choice>[
-
     const Choice(title: 'Payment', icon: Icons.account_balance_wallet),
     const Choice(title: 'Nutrition Info', icon: Icons.info_outline),
     const Choice(title: 'Workout Routine', icon: Icons.directions_run),
@@ -90,14 +91,18 @@ class MainScreenState extends State<MainScreen> {
   void onItemMenuPress(Choice choice) {
     if (choice.title == 'Log out') {
       handleSignOut();
-    }
-    if (choice.title == 'Nutrition Info') {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => NutritionScreen()));
-    }
-    else {
+    } else if (choice.title == 'Edit') {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => EditScreen()));
+    } else if (choice.title == 'Payment') {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => PaymentScreen()));
+    } else if (choice.title == 'Nutrition Info') {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => NutritionScreen()));
+    } else if (choice.title == 'Workout Routine') {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => WorkoutRoutineScreen()));
     }
   }
 
