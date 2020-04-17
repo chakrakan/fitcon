@@ -1,8 +1,12 @@
+import 'package:fitcon/screens/main_screen.dart';
+import 'package:fitcon/screens/nutrition/nutrition_screen.dart';
+import 'package:fitcon/screens/workout_routine_screen.dart';
 import 'package:flutter/material.dart';
 import 'screens/welcome_screen.dart';
 import 'screens/chat_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/registration_client_screen.dart';
+import 'screens/nutrition/nutrition_screen.dart';
 
 void main() => runApp(FitCon());
 
@@ -18,6 +22,9 @@ class FitCon extends StatelessWidget {
           LoginScreen.id: (context) => LoginScreen(),
           RegistrationClientScreen.id: (context) => RegistrationClientScreen(),
           ChatScreen.id: (context) => ChatScreen(),
+          NutritionScreen.id: (context) => NutritionScreen(),
+          WorkoutRoutineScreen.id: (context) => WorkoutRoutineScreen(),
+          MainScreen.id: (context) => MainScreen(),
         });
   }
 }
