@@ -59,3 +59,14 @@ At the end of every 2 weeks/iteration, we will have a meeting to review all work
 In order to prevent confusion, the default branch for the repository has been set to `develop` so we will be working on that.
 
 I've also set up a branch rule for the `master` branch which will only allow pull-requests to go through once reviewed by at least 3 members of the team (I expect everyone to be present for the code-reviews).
+
+## NOTE
+
+Whenever you need to take the latest updates from `develop` branch to your own feature branch, do the following:
+- `cd` to your working directory for the project
+- `git checkout your_feature_branch`
+- `git merge develop`
+- if there are merge conflicts fix them locally
+- `git add .` to add everything within your feature branch
+- `git commit` to commit everything added
+- `git push` to see those changes - at this point you should be even with changes from develop
