@@ -225,11 +225,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         }
                       }
                     }),
-//                RoundedButton(
-//                  onPressed: handleSignIn,
-//                  title: 'SIGN IN WITH GOOGLE',
-//                  colour: Color(0xffdd4b39),
-//                ),
                 BackButton(),
               ],
             ),

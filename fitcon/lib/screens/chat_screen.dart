@@ -426,16 +426,6 @@ class _ChatState extends State<Chat> {
     }
   }
 
-  //ToDo: Figure out from Firebase docs how to best implement this
-  //for now we have workaround
-//  Future<bool> onBackPress() {
-//    Firestore.instance
-//        .collection('users')
-//        .document(id)
-//        .updateData({'chattingWith': null});
-//    return Future.value(false);
-//  }
-
   Future<bool> onBackPress() {
     Navigator.pop(context);
   }
