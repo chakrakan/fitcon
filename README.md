@@ -25,24 +25,24 @@ For context, these demonstrations are running on the Pixel 3 API 29 emulator
 
 ### Log In
 
-![Log In](https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/log_in.png)
+![Log In](https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/log_in.png =200x400)
 
 ### Main 
 
-![Main](https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/chat_screen.png)
+![Main](https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/chat_screen.png =200x400)
 
 ## Sample Chat
 
-![Sample Chat](https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/sample_chat.png)
+![Sample Chat](https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/sample_chat.png =200x400)
 
 ### Edit User Profile
 
-![Edit User](https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/edit_user.png)
+![Edit User](https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/edit_user.png =200x400)
 
 ### Nutrition Add/Edit
 
-![Nutrition](https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/nutrition_edit.png)
+![Nutrition](https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/nutrition_edit.png =200x400)
 
 ### Payment
 
-![Payment](https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/payment.png)
+![Payment](https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/payment.png =200x400)
