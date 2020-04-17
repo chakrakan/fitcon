@@ -18,3 +18,31 @@ please ensure you have the following software installed on your computer:
 3. Run `flutter doctor -v` so see if all prerequisites are checked for you, if not fix those
 4. Use `flutter pub get` to download all the dependencies listed in the `pubspec.yml` file
 5. Finally, use `flutter run` to run the app on your open emulator
+
+## Sample Demo
+
+For context, these demonstrations are running on the Pixel 3 API 29 emulator
+
+### Log In
+
+![Log In](https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/log_in.png)
+
+### Main 
+
+![Main](https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/chat_screen.png)
+
+## Sample Chat
+
+![Sample Chat](https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/sample_chat.png)
+
+### Edit User Profile
+
+![Edit User](https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/edit_user.png)
+
+### Nutrition Add/Edit
+
+![Nutrition](https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/nutrition_edit.png)
+
+### Payment
+
+![Payment](https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/payment.png)
