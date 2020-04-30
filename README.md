@@ -1,6 +1,6 @@
 # Fitcon
 
-Flutter/Dart Project for COMP231, Centennial College
+Flutter/Dart Project with Firebase backend for COMP231, Centennial College
 
 ## Prerequisites 
 please ensure you have the following software installed on your computer:
