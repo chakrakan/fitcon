@@ -27,7 +27,7 @@ dependencies:
   cloud_firestore: ^0.13.4+1
   #For google sign in
   google_sign_in: ^4.1.4
-  firebase_messaging: ^6.0.12
+  firebase_messaging: ^7.0.0
   flutter_local_notifications: ^1.2.2
   fluttertoast: ^7.0.0
   cached_network_image: ^2.0.0
