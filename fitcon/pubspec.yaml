@@ -16,7 +16,7 @@ dependencies:
   toast: ^0.1.5
   cupertino_icons: ^0.1.2
   # Add the dependency for the Firebase Core Flutter SDK
-  firebase_core: ^0.4.4+2
+  firebase_core: ^0.5.0
 
   # Add the dependency for the FlutterFire plugin for Google Analytics
   #firebase_analytics: ^5.0.11
