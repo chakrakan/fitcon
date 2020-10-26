@@ -29,3 +29,17 @@ For context, these demonstrations are running on the Pixel 3 API 29 emulator
 | Nutrition | Payment |
 |:-----:|:-----:|
 | <img src="https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/nutrition_edit.png" alt="Nutrition Edit" width="200" height="400" /> | <img src="https://github.com/chakrakan/fitcon/blob/master/fitcon/demo/payment.png" alt="Payment" width="200" height="400" /> |
+
+## Lucidchart Diagrams
+
+<p align="center">
+   <h3>Client</h3>
+    <img src="https://github.com/chakrakan/fitcon/blob/master/fitcon_client.png" alt="Client" width="800" height="600">
+    <br />
+    <h3>Trainer</h3>
+    <img src="https://github.com/chakrakan/fitcon/blob/master/fitcon_trainer.png" alt="Trainer" width="800" height="600">
+    <br />
+    <h3>User Modeling</h3>
+    <img src="https://github.com/chakrakan/fitcon/blob/master/fitcon_user_modeling.png" alt="User Modeling" width="800" height="600">
+</p>
+
